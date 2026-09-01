@@ -23,6 +23,10 @@ class DashboardController extends Controller
                 ->latest()
                 ->take(5)
                 ->get(['id', 'title', 'category_id', 'status', 'created_at']),
+            'recentActivity' => News::with('user:id,name')
+                ->latest('updated_at')
+                ->take(4)
+                ->get(['id', 'title', 'user_id', 'status', 'updated_at']),
         ]);
     }
 }
