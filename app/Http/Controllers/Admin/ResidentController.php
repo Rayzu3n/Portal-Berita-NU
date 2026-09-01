@@ -68,7 +68,7 @@ class ResidentController extends Controller
                 'nullable',
                 'string',
                 'max:50',
-                'unique:residents,nik,' . $warga->id,
+                'unique:residents,nik,'.$warga->id,
             ],
             'gender' => ['nullable', 'in:male,female'],
             'address' => ['nullable', 'string'],

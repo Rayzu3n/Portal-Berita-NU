@@ -16,7 +16,7 @@ class News extends Model
         'content',
         'cover_image',
         'status',
-        'published_at'
+        'published_at',
     ];
 
     protected function casts(): array
