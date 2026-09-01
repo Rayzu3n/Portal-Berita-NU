@@ -11,7 +11,7 @@ class NewsController extends Controller
 {
     public function index(): Response
     {
-        $news = News::with(['category', 'author'])
+        $news = News::with(['category', 'user'])
             ->latest()
             ->paginate(10);
 
