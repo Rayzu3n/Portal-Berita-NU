@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\Storage;
 
 class News extends Model
 {
@@ -19,6 +21,8 @@ class News extends Model
         'published_at',
     ];
 
+    protected $appends = ['cover_image_url'];
+
     protected function casts(): array
     {
         return [
@@ -26,27 +30,20 @@ class News extends Model
         ];
     }
 
-    /**
-     * @return BelongsTo<Category, $this>
-     */
+    protected function coverImageUrl(): Attribute
+    {
+        return Attribute::get(
+            fn () => $this->cover_image ? Storage::url($this->cover_image) : null,
+        );
+    }
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
 
-    /**
-     * @return BelongsTo<User, $this>
-     */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
-    }
-
-    /**
-     * @return BelongsTo<User, $this>
-     */
-    public function author(): BelongsTo
-    {
-        return $this->belongsTo(User::class, 'user_id');
     }
 }
