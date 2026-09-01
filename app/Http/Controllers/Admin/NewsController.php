@@ -25,12 +25,12 @@ class NewsController extends Controller
         return Inertia::render('Admin/News/Create');
     }
 
-    public function store()
+    public function store(): void
     {
         //
     }
 
-    public function show(News $news)
+    public function show(News $news): void
     {
         //
     }
@@ -42,12 +42,12 @@ class NewsController extends Controller
         ]);
     }
 
-    public function update(News $news)
+    public function update(News $news): void
     {
         //
     }
 
-    public function destroy(News $news)
+    public function destroy(News $news): void
     {
         //
     }

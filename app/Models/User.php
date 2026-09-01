@@ -42,6 +42,9 @@ class User extends Authenticatable
         ];
     }
 
+    /**
+     * @return HasMany<News, $this>
+     */
     public function news(): HasMany
     {
         return $this->hasMany(News::class);
